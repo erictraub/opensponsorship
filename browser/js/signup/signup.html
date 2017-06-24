@@ -177,8 +177,7 @@
 									<select name="association"
 										type="select"
 										class="signup-input"
-										ng-model="aboutYou.association"
-										required>
+										ng-model="aboutYou.association">
 											<option value="nfl">NFL</option>
 											<option value="nba">NBA</option>
 											<option value="nba">MLB</option>
@@ -239,7 +238,8 @@
 									Previous
 								</button>
 								<button type="submit"
-									class="btn btn-next pull-right">
+									class="btn btn-next pull-right"
+									ng-disabled="aboutYouForm.$invalid">
 									Next
 								</button>
 							</div>

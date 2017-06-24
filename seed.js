@@ -4,10 +4,12 @@ var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Sport = mongoose.model('Sport');
+var Athlete = mongoose.model('Athlete');
 
 var wipeCollections = function () {
     var removeUsers = Sport.remove({});
-    return Promise.all([ removeUsers ]);
+    var removeAthletes = Athlete.remove({});
+    return Promise.all([ removeUsers, removeAthletes ]);
 };
 
 var seedSports = function () {

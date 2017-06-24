@@ -21,7 +21,7 @@ var schema = new mongoose.Schema({
         required: true
     },
     dateOfBirth: {
-        type: String,
+        type: Date,
         required: true
     },
     sports: [{
@@ -29,10 +29,12 @@ var schema = new mongoose.Schema({
         ref: 'Sport'
     }],
     city: {
-        type: String
+        type: String,
+        required: true
     },
     state: {
-        type: String
+        type: String,
+        required: true
     },
     association: {
         type: String
