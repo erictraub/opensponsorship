@@ -1,4 +1,4 @@
-app.controller('SignupReviewController', function($scope, SignupFactory, sports) {
+app.controller('SignupReviewController', function($scope, SignupFactory, sports, $state) {
 	$scope.sportsById = SignupFactory.formatSportsById(sports);
 	$scope.athleteInfo = SignupFactory.signupInfo;
 	$scope.basicInfo = SignupFactory.formatObjectForView(SignupFactory.signupInfo.basicInfo);
@@ -13,8 +13,13 @@ app.controller('SignupReviewController', function($scope, SignupFactory, sports)
 		SignupFactory.createAthlete(postObj)
 		.then(newAthlete => {
 			console.log(newAthlete)
+			$state.go('athletes');
 		});
 	};
+
+    $scope.onEditAnswers = function () {
+        $state.go('signup', { editing: true });
+    };
 
 	$scope.getType = function (data) {
 		if (Array.isArray(data)) return 'array';

@@ -1,0 +1,29 @@
+<section id="athletes">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<h1>Athletes</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>State</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="athlete in athletes">
+							<td>{{ athlete.firstName }}</td>
+							<td>{{ athlete.lastName }}</td>
+							<td>{{ athlete.state }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>

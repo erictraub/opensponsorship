@@ -1,6 +1,7 @@
 #signup {
+	padding-top: 60px;
 	min-height: 100vh;
-	background-color: #fafafa;
+	background: linear-gradient(to bottom right, #51b798, #539cd5);
 
 	.input-container {
 		position: relative;
@@ -15,6 +16,20 @@
 
 	.signup-input {
 		width: 100%;
+	    background: #fafafa;
+	    box-shadow: none;
+	    border: 0px;
+	    height: 40px;
+	    margin-bottom: 20px;
+	    padding-left: 10px;
+	    &:focus {
+	    	outline: none;
+	    	border: 1px solid #2196f3;
+	    }
+	}
+
+	.signup-input:focus + label {
+		color: #2196f3;
 	}
 
 	.drop-box {
@@ -23,17 +38,63 @@
 	}
 
 	.drop-box-text {
-		margin-top: 30px;
+		padding-top: 30px;
 		text-align: center;
 	}
 
 	.sport-input-container {
 		height: 80px;
 		overflow-y: scroll;
+	    height: 40px;
+	    background: #fafafa;
+	    overflow-y: scroll;
 	}
 
 	.sport-option-label {
 		display: block;
+	}
+
+	.quesiton-panel {
+		background-color: white;
+		padding: 30px;
+	}
+
+	.progress-bar {
+		background-color: #1981d4;
+	}
+
+	.progress {
+		margin-bottom: 50px;
+	}
+
+	.btn-next {
+		background: #2196f3;
+		color: white;
+		&:hover {
+			background-color: #1981d4;
+		}
+	}
+
+	.btn-prev {
+		background-color: transparent;
+		padding-left: 0px;
+		color: grey;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.btn {
+		min-width: 100px;
+		transition: 0.2s;
+	}
+
+	.drop-box {
+		border: 2px dashed black;
+		margin: 30px 0px;
+		&:hover {
+			cursor: pointer;
+		}
 	}
 
 }

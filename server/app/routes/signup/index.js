@@ -54,13 +54,13 @@ router.post('/profile-image', function(req, res, next) {
     });
 });
 
-router.post('/athlete', function(req, res, next) {
-    Athlete.create(req.body)
-    .then(newAthlete => {
-        res.json(newAthlete);
-    })
-    .catch(err => next(err));
-});
+// router.post('/athlete', function(req, res, next) {
+//     Athlete.create(req.body)
+//     .then(newAthlete => {
+//         res.json(newAthlete);
+//     })
+//     .catch(err => next(err));
+// });
 
 router.get('/sport', (req, res, next) => {
     Sport.find({})

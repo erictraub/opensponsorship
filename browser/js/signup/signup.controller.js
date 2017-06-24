@@ -1,10 +1,14 @@
-app.controller('SignupController', function($scope, Upload, $log, SignupFactory, sports) {
-	$scope.currentStep = 'Basic Info';
-	$scope.basicInfo = {};
-	$scope.aboutYou = {};
-	$scope.socialMedia = {};
-	$scope.files = [];
-	$scope.sports = sports;
+app.controller('SignupController', function($scope, Upload, $log, SignupFactory, sports, $stateParams, $state) {
+    $scope.currentStep = 'Basic Info';
+    $scope.basicInfo = {};
+    $scope.aboutYou = {};
+    $scope.socialMedia = {};
+    setStateForEditing();
+    $scope.files = [];
+    $scope.sports = sports;
+    $scope.states = SignupFactory.allStates;
+    $scope.uploadedImg;
+
 	// $scope.busy = true;
 	// $scope.ready = false;
 
@@ -12,17 +16,27 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
 		console.log('basicInfo: ', $scope.basicInfo);
 		console.log('aboutYou: ', $scope.aboutYou);
 		console.log('socialMedia: ', $scope.socialMedia);
-		if ($scope.currentStep === 'Basic Info') $scope.currentStep = 'About You';
-		else if ($scope.currentStep === 'About You') $scope.currentStep = 'Social Media';
+		if ($scope.currentStep === 'Basic Info') {
+            $scope.currentStep = 'About You';
+            updateProgressBar(66);
+        }
+		else if ($scope.currentStep === 'About You') {
+            $scope.currentStep = 'Social Media';
+            updateProgressBar(100);
+        }
 	};
 
 	$scope.onPrev = function (form) {
 		console.log('FORM: ', form);
-		if ($scope.currentStep === 'About You') $scope.currentStep = 'Basic Info';
-		else if ($scope.currentStep === 'Social Media') $scope.currentStep = 'About You';
+		if ($scope.currentStep === 'About You') {
+            $scope.currentStep = 'Basic Info';
+            updateProgressBar(33);
+        }
+		else if ($scope.currentStep === 'Social Media') {
+            $scope.currentStep = 'About You';
+            updateProgressBar(66);
+        }
 	};
-
-	// var self = this;
 
     $scope.onReview = function(form) {
     	SignupFactory.signupInfo['basicInfo'] = $scope.basicInfo;
@@ -32,6 +46,7 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
     	SignupFactory.signupInfo['socialMedia'] = $scope.socialMedia;
     	console.log('FACT: ', SignupFactory.signupInfo);
     	$scope.all = SignupFactory.signupInfo;
+        // $state.go('signup-review');
     };
 
 	$scope.$watch('files', function () {
@@ -55,6 +70,21 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
                 });
             }
         }
+    };
+
+    function setStateForEditing() {
+        if ($stateParams.editing) {
+            console.log('SignupFactory', SignupFactory.signupInfo.aboutYou)
+            $scope.aboutYou = SignupFactory.signupInfo.aboutYou;
+            $scope.basicInfo = SignupFactory.signupInfo.basicInfo;
+            $scope.socialMedia = SignupFactory.signupInfo.socialMedia;
+            console.log('SCOPE', $scope);
+        }
+    };
+
+    function updateProgressBar (percentNum) {
+        percentNum = percentNum + '%';
+        $('.progress-bar').css('width', percentNum);
     };
 
 

@@ -1,145 +1,141 @@
 <section id="signup">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
+			<div class="col-sm-8 col-sm-offset-2">
 
-				<div class="row">
-					<div class="col-sm-12">
-						<h3>{{ currentStep }}</h3>
-						<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!-- basic info form -->
-				<form name="basicInfoForm"
-					ng-submit="onNext(basicInfoForm)"
-					ng-show="currentStep === 'Basic Info'"
-					novalidate>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="input-container">
-								<input name="firstName"
-									type="text"
-									maxlength="40" 
-									class="signup-input"
-									ng-model="basicInfo.firstName"></input>
-								<label class="input-label"
-									for="firstName">First Name
-								</label>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="input-container">
-								<input name="lastName"
-									type="text"
-									maxlength="40" 
-									class="signup-input"
-									ng-model="basicInfo.lastName"></input>
-								<label class="input-label"
-									for="lastName">Last Name
-								</label>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="input-container">
-								<select name="gender"
-									type="select"
-									class="signup-input"
-									ng-model="basicInfo.gender">
-										<option value="female">Female</option>
-										<option value="male">Male</option>
-								</select>
-								<label class="input-label"
-									for="gender">Gender
-								</label>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="input-container">
-								<input name="nationality"
-									type="text"
-									maxlength="40" 
-									class="signup-input"
-									ng-model="basicInfo.nationality"></input>
-								<label class="input-label"
-									for="nationality">Nationality
-								</label>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="input-container">
-								<input name="dateOfBirth"
-									type="date"
-									class="signup-input"
-									ng-model="basicInfo.dateOfBirth"></input>
-								<label class="input-label"
-									for="dateOfBirth">Date of Birth
-								</label>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="input-container">
-								<!-- <select name="sports"
-									type="select"
-									class="signup-input"
-									ng-model="basicInfo.sports">
-										<option
-											ng-repeat="sport in sports"
-											ng-value="sport._id">
-												{{ sport.name }}
-										</option>
-								</select>
-								<label class="input-label"
-									for="sports">Sports
-								</label> -->
-								<div class="sport-input-container">
-									<label ng-repeat="sport in sports"
-										class="sport-option-label">
-										<input type="checkbox"
-										checklist-model="basicInfo.sports"
-										checklist-value="sport._id">
-											{{ sport.name }}
-									</label>
-								</div>
-								<label class="input-label"
-									for="sports">Sports
-								</label>
-							</div>
-						</div>
-					</div>
+				<div class="quesiton-panel">
 
 					<div class="row">
 						<div class="col-sm-12">
-							<button type="button"
-								ng-click="onPrev(form)"
-								class="btn btn-prev">
-								Previous
-							</button>
-							<button type="submit"
-								class="btn btn-next pull-right">
-								Next
-							</button>
+							<h3 class="current-step">{{ currentStep }}</h3>
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width:33%">
+								</div>
+							</div>
 						</div>
 					</div>
+					
+					<!-- basic info form -->
+					<form name="basicInfoForm"
+						ng-submit="onNext(basicInfoForm)"
+						ng-show="currentStep === 'Basic Info'"
+						novalidate>
 
-				</form>
-				<!-- end basic info form -->
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-container">
+									<input name="firstName"
+										type="text"
+										maxlength="40" 
+										class="signup-input"
+										ng-model="basicInfo.firstName"
+										required></input>
+									<label class="input-label"
+										for="firstName">First Name
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-container">
+									<input name="lastName"
+										type="text"
+										maxlength="40" 
+										class="signup-input"
+										ng-model="basicInfo.lastName"
+										required></input>
+									<label class="input-label"
+										for="lastName">Last Name
+									</label>
+								</div>
+							</div>
+						</div>
 
-				<!-- about you form -->
-				<form name="aboutYouForm"
-					ng-show="currentStep === 'About You'"
-					ng-submit="onNext(aboutYouForm)"
-					novalidate>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-container">
+									<select name="gender"
+										type="select"
+										class="signup-input"
+										ng-model="basicInfo.gender"
+										required>
+											<option value="female">Female</option>
+											<option value="male">Male</option>
+									</select>
+									<label class="input-label"
+										for="gender">Gender
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-container">
+									<input name="nationality"
+										type="text"
+										maxlength="40" 
+										class="signup-input"
+										ng-model="basicInfo.nationality"
+										required></input>
+									<label class="input-label"
+										for="nationality">Nationality
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="input-container">
+									<input name="dateOfBirth"
+										type="date"
+										class="signup-input"
+										ng-model="basicInfo.dateOfBirth"
+										required></input>
+									<label class="input-label"
+										for="dateOfBirth">Date of Birth
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-container">
+									<div class="sport-input-container">
+										<label ng-repeat="sport in sports"
+											class="sport-option-label">
+											<input type="checkbox"
+											checklist-model="basicInfo.sports"
+											checklist-value="sport._id"
+											ng-required="!basicInfo.sports.length">
+												{{ sport.name }}
+										</label>
+									</div>
+									<label class="input-label"
+										for="sports">Sports
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<button type="button"
+									ng-click="onPrev(form)"
+									class="btn btn-prev">
+									Previous
+								</button>
+								<button type="submit"
+									class="btn btn-next pull-right"
+									ng-disabled="basicInfoForm.$invalid">
+									Next
+								</button>
+							</div>
+						</div>
+
+					</form>
+					<!-- end basic info form -->
+
+					<!-- about you form -->
+					<form name="aboutYouForm"
+						ng-show="currentStep === 'About You'"
+						ng-submit="onNext(aboutYouForm)"
+						novalidate>
 
 						<div class="row">
 							<div class="col-sm-6">
@@ -148,7 +144,8 @@
 										type="text"
 										maxlength="40" 
 										class="signup-input"
-										ng-model="aboutYou.city"></input>
+										ng-model="aboutYou.city"
+										required></input>
 									<label class="input-label"
 										for="city">Current City
 									</label>
@@ -159,9 +156,13 @@
 									<select name="state"
 										type="select"
 										class="signup-input"
-										ng-model="aboutYou.state">
-											<option value="conn">Connecticut</option>
-											<option value="mass">Mass</option>
+										ng-model="aboutYou.state"
+										required>
+											<option
+												value="{{ state.abbrev }}"
+												ng-repeat="state in states">
+													{{ state.name }}
+											</option>
 									</select>
 									<label class="input-label"
 										for="state">Current State
@@ -176,9 +177,12 @@
 									<select name="association"
 										type="select"
 										class="signup-input"
-										ng-model="aboutYou.association">
+										ng-model="aboutYou.association"
+										required>
 											<option value="nfl">NFL</option>
 											<option value="nba">NBA</option>
+											<option value="nba">MLB</option>
+											<option value="nba">MLS</option>
 											<option value="other">Other</option>
 									</select>
 									<label class="input-label"
@@ -270,7 +274,7 @@
 											class="signup-input"
 											ng-model="socialMedia.twitter"></input>
 										<label class="input-label"
-											for="state">Twitter
+											for="twitter">Twitter
 										</label>
 									</div>
 								</div>
@@ -285,7 +289,7 @@
 											class="signup-input"
 											ng-model="socialMedia.snapchat"></input>
 										<label class="input-label"
-											for="state">Snapchat
+											for="snapchat">Snapchat
 										</label>
 									</div>
 								</div>
@@ -324,9 +328,17 @@
 											<h3 class="info">{{ progress }} % complete</h3>
 										</div>
 										<label class="input-label"
-											for="state">Uplad photo
+											for="photo">Uplad photo
 										</label>
 									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-4 col-sm-offset-4">
+									<img class="img img-responsive upload-img"
+										ng-src="{{ socialMedia['profileImage'] }}"
+										ng-if="socialMedia['profileImage']">
 								</div>
 							</div>
 
@@ -347,6 +359,8 @@
 							</div>
 						</form>
 						<!-- end social media form -->
+
+				</div>
 
 			</div>
 		</div>

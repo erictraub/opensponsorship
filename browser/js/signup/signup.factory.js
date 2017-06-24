@@ -7,24 +7,28 @@ app.factory('SignupFactory', function($http) {
 	    "firstName": "Eric",
 	    "lastName": "Traub",
 	    "gender": "male",
-	    "nationality": "White",
+	    "nationality": "Caucasion",
 	    "dateOfBirth": "2017-06-08T04:00:00.000Z",
-	    "sports": [ "594c91aba5a7c09003750f0a", "594c91aba5a7c09003750f0b", "594c91aba5a7c09003750f0c", "594c91aba5a7c09003750f0f" ]
+	    "sports": [
+	      "594c91aba5a7c09003750f0b",
+	      "594c91aba5a7c09003750f0e",
+	      "594c91aba5a7c09003750f10"
+	    ]
 	  },
 	  "aboutYou": {
-	    "city": "Torrington",
-	    "state": "conn",
-	    "association": "nfl",
-	    "team": "lasers",
-	    "interests": [ "food", "wake", "lake" ],
-	    "charities": [ "kids", "education", "food" ]
+	    "city": "New York",
+	    "state": "NY",
+	    "association": "other",
+	    "team": "Red Tide",
+	    "interests": ["wake", "lake", "swim", "music"],
+	    "charities": ["kids", "education", "food"]
 	  },
 	  "socialMedia": {
-	    "instagram": "eInsta",
+	    "instagram": "eInstagram",
 	    "twitter": "eTwitter",
 	    "snapchat": "eSnapchat",
 	    "Facebook": "eFacebook",
-	    "profileImage": "https://et-opensponsorship.s3.amazonaws.com/uploads/athlete-photos/Screen%20Shot%202017-03-20%20at%2010.30.13%20PM.png1498187458579"
+	    "profileImage": "https://et-opensponsorship.s3.amazonaws.com/uploads/athlete-photos/Screen%20Shot%202017-03-20%20at%2010.30.13%20PM.png1498281051318"
 	  }
 	};
 
@@ -38,7 +42,7 @@ app.factory('SignupFactory', function($http) {
 			var data = {};
 			data.title = SignupFactory.camelCaseToNormalFormat(key);
 			data.value = infoObj[key];
-			if (key === 'dateOfBirth') data.value = data.value.substring(0, 10);
+			// if (key === 'dateOfBirth') data.value = data.value.getMonth() + '/' + data.value.getDay() + '/' + data.value.getFullYear();
 			if (key !== 'profileImage') infoArr.push(data);
 		};
 		return infoArr;
@@ -52,7 +56,7 @@ app.factory('SignupFactory', function($http) {
     };
 
     SignupFactory.createAthlete = function(body){
-        return $http.post('/api/signup/athlete', body)
+        return $http.post('/api/athlete', body)
         .then(function(response){
             return response.data;
         });
@@ -84,6 +88,245 @@ app.factory('SignupFactory', function($http) {
     	});
     	return obj;
     };
+
+    SignupFactory.allStates = [
+	    {
+	        "name": "Alabama",
+	        "abbrev": "AL"
+	    },
+	    {
+	        "name": "Alaska",
+	        "abbrev": "AK"
+	    },
+	    {
+	        "name": "American Samoa",
+	        "abbrev": "AS"
+	    },
+	    {
+	        "name": "Arizona",
+	        "abbrev": "AZ"
+	    },
+	    {
+	        "name": "Arkansas",
+	        "abbrev": "AR"
+	    },
+	    {
+	        "name": "California",
+	        "abbrev": "CA"
+	    },
+	    {
+	        "name": "Colorado",
+	        "abbrev": "CO"
+	    },
+	    {
+	        "name": "Connecticut",
+	        "abbrev": "CT"
+	    },
+	    {
+	        "name": "Delaware",
+	        "abbrev": "DE"
+	    },
+	    {
+	        "name": "District Of Columbia",
+	        "abbrev": "DC"
+	    },
+	    {
+	        "name": "Federated States Of Micronesia",
+	        "abbrev": "FM"
+	    },
+	    {
+	        "name": "Florida",
+	        "abbrev": "FL"
+	    },
+	    {
+	        "name": "Georgia",
+	        "abbrev": "GA"
+	    },
+	    {
+	        "name": "Guam",
+	        "abbrev": "GU"
+	    },
+	    {
+	        "name": "Hawaii",
+	        "abbrev": "HI"
+	    },
+	    {
+	        "name": "Idaho",
+	        "abbrev": "ID"
+	    },
+	    {
+	        "name": "Illinois",
+	        "abbrev": "IL"
+	    },
+	    {
+	        "name": "Indiana",
+	        "abbrev": "IN"
+	    },
+	    {
+	        "name": "Iowa",
+	        "abbrev": "IA"
+	    },
+	    {
+	        "name": "Kansas",
+	        "abbrev": "KS"
+	    },
+	    {
+	        "name": "Kentucky",
+	        "abbrev": "KY"
+	    },
+	    {
+	        "name": "Louisiana",
+	        "abbrev": "LA"
+	    },
+	    {
+	        "name": "Maine",
+	        "abbrev": "ME"
+	    },
+	    {
+	        "name": "Marshall Islands",
+	        "abbrev": "MH"
+	    },
+	    {
+	        "name": "Maryland",
+	        "abbrev": "MD"
+	    },
+	    {
+	        "name": "Massachusetts",
+	        "abbrev": "MA"
+	    },
+	    {
+	        "name": "Michigan",
+	        "abbrev": "MI"
+	    },
+	    {
+	        "name": "Minnesota",
+	        "abbrev": "MN"
+	    },
+	    {
+	        "name": "Mississippi",
+	        "abbrev": "MS"
+	    },
+	    {
+	        "name": "Missouri",
+	        "abbrev": "MO"
+	    },
+	    {
+	        "name": "Montana",
+	        "abbrev": "MT"
+	    },
+	    {
+	        "name": "Nebraska",
+	        "abbrev": "NE"
+	    },
+	    {
+	        "name": "Nevada",
+	        "abbrev": "NV"
+	    },
+	    {
+	        "name": "New Hampshire",
+	        "abbrev": "NH"
+	    },
+	    {
+	        "name": "New Jersey",
+	        "abbrev": "NJ"
+	    },
+	    {
+	        "name": "New Mexico",
+	        "abbrev": "NM"
+	    },
+	    {
+	        "name": "New York",
+	        "abbrev": "NY"
+	    },
+	    {
+	        "name": "North Carolina",
+	        "abbrev": "NC"
+	    },
+	    {
+	        "name": "North Dakota",
+	        "abbrev": "ND"
+	    },
+	    {
+	        "name": "Northern Mariana Islands",
+	        "abbrev": "MP"
+	    },
+	    {
+	        "name": "Ohio",
+	        "abbrev": "OH"
+	    },
+	    {
+	        "name": "Oklahoma",
+	        "abbrev": "OK"
+	    },
+	    {
+	        "name": "Oregon",
+	        "abbrev": "OR"
+	    },
+	    {
+	        "name": "Palau",
+	        "abbrev": "PW"
+	    },
+	    {
+	        "name": "Pennsylvania",
+	        "abbrev": "PA"
+	    },
+	    {
+	        "name": "Puerto Rico",
+	        "abbrev": "PR"
+	    },
+	    {
+	        "name": "Rhode Island",
+	        "abbrev": "RI"
+	    },
+	    {
+	        "name": "South Carolina",
+	        "abbrev": "SC"
+	    },
+	    {
+	        "name": "South Dakota",
+	        "abbrev": "SD"
+	    },
+	    {
+	        "name": "Tennessee",
+	        "abbrev": "TN"
+	    },
+	    {
+	        "name": "Texas",
+	        "abbrev": "TX"
+	    },
+	    {
+	        "name": "Utah",
+	        "abbrev": "UT"
+	    },
+	    {
+	        "name": "Vermont",
+	        "abbrev": "VT"
+	    },
+	    {
+	        "name": "Virgin Islands",
+	        "abbrev": "VI"
+	    },
+	    {
+	        "name": "Virginia",
+	        "abbrev": "VA"
+	    },
+	    {
+	        "name": "Washington",
+	        "abbrev": "WA"
+	    },
+	    {
+	        "name": "West Virginia",
+	        "abbrev": "WV"
+	    },
+	    {
+	        "name": "Wisconsin",
+	        "abbrev": "WI"
+	    },
+	    {
+	        "name": "Wyoming",
+	        "abbrev": "WY"
+	    }
+	];
 
 	return SignupFactory;
 });

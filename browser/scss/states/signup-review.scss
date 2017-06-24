@@ -1,4 +1,6 @@
 #signup-review {
+	padding-top: 60px;
+	
 	.review-img {
 		height: 200px;
 		margin: auto;
@@ -7,5 +9,30 @@
 	.button-row {
 		margin-top: 30px;
 		margin-bottom: 50px;
+	}
+
+	.prop-title {
+		font-weight: bold;
+	}
+
+	.repeat-row {
+		background-color: white;
+	}
+
+	.btn-complete {
+		background: #2196f3;
+		color: white;
+		&:hover {
+			background-color: #1981d4;
+		}
+	}
+
+	.btn-edit {
+		background-color: transparent;
+		padding-left: 0px;
+		color: grey;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }

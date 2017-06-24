@@ -1,6 +1,6 @@
 app.config(function ($stateProvider) {
     $stateProvider.state('signup', {
-        url: '/signup',
+        url: '/signup?editing',
         templateUrl: 'js/signup/signup.html',
         controller: 'SignupController',
         resolve: {

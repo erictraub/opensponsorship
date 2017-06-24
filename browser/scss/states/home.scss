@@ -1,4 +1,23 @@
 #home {
+	padding-top: 60px;
 	min-height: 100vh;
+    background: linear-gradient(to bottom right, #51b798, #539cd5);
+
+    .btn-container {
+    	text-align: center;
+    	padding-top: 150px;
+    }
+
+    .btn {
+    	background: white;
+    	color: #51b69b;
+    	margin: 20px;
+    	min-width: 130px;
+    	padding: 5px 0px;
+    	font-size: 20px;
+        &:hover {
+            background: #f5f5f5;
+        }
+    }
 }
 
