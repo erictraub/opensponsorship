@@ -21,7 +21,12 @@
 				<p>{{ data.title }}:</p>
 			</div>
 			<div class="col-md-4">
-				<p>{{ data.value }}</p>
+				<p ng-if="getType(data.value) === 'string'">{{ data.value }}</p>
+				<p ng-if="getType(data.value) === 'array'"
+					ng-repeat="item in data.value track by $index">
+					<span ng-if="data.title !== 'Sports'">{{ item }}</span>
+					<span ng-if="data.title === 'Sports'">{{ sportsById[item] }}</span>
+				</p>
 			</div>
 		</div>
 		<!-- end basic info -->
@@ -38,7 +43,11 @@
 				<p>{{ data.title }}:</p>
 			</div>
 			<div class="col-md-4">
-				<p>{{ data.value }}</p>
+				<p ng-if="getType(data.value) === 'string'">{{ data.value }}</p>
+				<p ng-if="getType(data.value) === 'array'"
+					ng-repeat="item in data.value track by $index">
+					{{ item }}
+				</p>
 			</div>
 		</div>
 		<!-- end about you -->
@@ -55,7 +64,11 @@
 				<p>{{ data.title }}:</p>
 			</div>
 			<div class="col-md-4">
-				<p>{{ data.value }}</p>
+				<p ng-if="getType(data.value) === 'string'">{{ data.value }}</p>
+				<p ng-if="getType(data.value) === 'array'"
+					ng-repeat="item in data.value track by $index">
+					{{ item }}
+				</p>
 			</div>
 		</div>
 		<!-- end social media -->
@@ -64,7 +77,10 @@
 		<div class="row button-row">
 			<div class="col-md-5 col-md-offset-3">
 				<button class="btn">Edit Answers</button>
-				<button class="btn pull-right">Complete Profile</button>
+				<button class="btn pull-right"
+					ng-click="onComplete()">
+					Complete Profile
+				</button>
 			</div>
 		</div>
 		<!-- end buttons row -->

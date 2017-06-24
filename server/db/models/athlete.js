@@ -43,13 +43,12 @@ var schema = new mongoose.Schema({
     team: {
         type: String
     },
-    interests: {
-        type: String,
-        required: true
-    },
-    charities: {
+    interests: [{
         type: String
-    },
+    }],
+    charities: [{
+        type: String
+    }],
     instagram: {
         type: String
     },
@@ -60,6 +59,9 @@ var schema = new mongoose.Schema({
         type: String
     },
     facebook: {
+        type: String
+    },
+    profileImage: {
         type: String
     }
 });

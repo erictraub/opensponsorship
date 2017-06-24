@@ -9,15 +9,15 @@ app.factory('SignupFactory', function($http) {
 	    "gender": "male",
 	    "nationality": "White",
 	    "dateOfBirth": "2017-06-08T04:00:00.000Z",
-	    "sports": "football"
+	    "sports": [ "594c91aba5a7c09003750f0a", "594c91aba5a7c09003750f0b", "594c91aba5a7c09003750f0c", "594c91aba5a7c09003750f0f" ]
 	  },
 	  "aboutYou": {
 	    "city": "Torrington",
 	    "state": "conn",
 	    "association": "nfl",
 	    "team": "lasers",
-	    "interests": "food, wake, lake",
-	    "charities": "kids, education, food"
+	    "interests": [ "food", "wake", "lake" ],
+	    "charities": [ "kids", "education", "food" ]
 	  },
 	  "socialMedia": {
 	    "instagram": "eInsta",
@@ -51,5 +51,40 @@ app.factory('SignupFactory', function($http) {
         });
     };
 
+    SignupFactory.createAthlete = function(body){
+        return $http.post('/api/signup/athlete', body)
+        .then(function(athlete){
+            return athlete;
+        });
+    };
+
+    SignupFactory.formatDataForPost = function (athleteInfo) {
+    	var postObj = {};
+    	for (var key in athleteInfo) {
+    		var dataObj = athleteInfo[key];
+    		for (var prop in dataObj) {
+    			postObj[prop] = dataObj[prop]
+    		};
+    	};
+    	return postObj;
+    };
+
+    SignupFactory.formatSportsById = function (sportsArr) {
+    	var obj = {};
+    	sportsArr.forEach(sport => {
+    		obj[sport._id] = sport['name'];
+    	});
+    	return obj;
+    };
+
+    SignupFactory.formatSportsByName = function (sportsArr) {
+    	var obj = {};
+    	sportsArr.forEach(sport => {
+    		obj[sport.name] = sport['_id'];
+    	});
+    	return obj;
+    };
+
 	return SignupFactory;
 });
+

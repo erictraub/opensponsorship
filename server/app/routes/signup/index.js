@@ -55,10 +55,12 @@ router.post('/profile-image', function(req, res, next) {
 });
 
 router.post('/athlete', function(req, res, next) {
-    Athlete.create({})
+    Athlete.create(req.body)
     .then(newAthlete => {
         console.log('ATH: ', newAthlete);
-    });
+        res.json(newAthlete);
+    })
+    .catch(err => next(err));
 });
 
 router.get('/sport', (req, res, next) => {

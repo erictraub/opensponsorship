@@ -26,13 +26,15 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
 
     $scope.onReview = function(form) {
     	SignupFactory.signupInfo['basicInfo'] = $scope.basicInfo;
+    	if (Array.isArray($scope.aboutYou.interests)) $scope.aboutYou.interests = $scope.aboutYou.interests.split(', ');
+    	if (Array.isArray($scope.aboutYou.charities)) $scope.aboutYou.charities = $scope.aboutYou.charities.split(', ');
     	SignupFactory.signupInfo['aboutYou'] = $scope.aboutYou;
     	SignupFactory.signupInfo['socialMedia'] = $scope.socialMedia;
     	console.log('FACT: ', SignupFactory.signupInfo);
     	$scope.all = SignupFactory.signupInfo;
     };
 
-	$scope.$watch('files', function () { 
+	$scope.$watch('files', function () {
 		$scope.upload($scope.files);
 	});
 
