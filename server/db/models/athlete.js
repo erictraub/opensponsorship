@@ -29,16 +29,13 @@ var schema = new mongoose.Schema({
         ref: 'Sport'
     }],
     city: {
-        type: String,
-        required: true
+        type: String
     },
     state: {
-        type: String,
-        required: true
+        type: String
     },
     association: {
-        type: String,
-        required: true
+        type: String
     },
     team: {
         type: String
