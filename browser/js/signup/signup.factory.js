@@ -2,36 +2,8 @@ app.factory('SignupFactory', function($http) {
 	var SignupFactory = {};
 
 	SignupFactory.signupInfo = {};
-	SignupFactory.signupInfo = {
-	  "basicInfo": {
-	    "firstName": "Eric",
-	    "lastName": "Traub",
-	    "gender": "male",
-	    "nationality": "Caucasion",
-	    "dateOfBirth": "2017-06-08T04:00:00.000Z",
-	    "sports": [
-	      "594c91aba5a7c09003750f0b",
-	      "594c91aba5a7c09003750f0e",
-	      "594c91aba5a7c09003750f10"
-	    ]
-	  },
-	  "aboutYou": {
-	    "city": "New York",
-	    "state": "NY",
-	    "association": "other",
-	    "team": "Red Tide",
-	    "interests": ["wake", "lake", "swim", "music"],
-	    "charities": ["kids", "education", "food"]
-	  },
-	  "socialMedia": {
-	    "instagram": "eInstagram",
-	    "twitter": "eTwitter",
-	    "snapchat": "eSnapchat",
-	    "Facebook": "eFacebook",
-	    "profileImage": "https://et-opensponsorship.s3.amazonaws.com/uploads/athlete-photos/Screen%20Shot%202017-03-20%20at%2010.30.13%20PM.png1498281051318"
-	  }
-	};
 
+	// change camel-case to normal-format for view
 	SignupFactory.camelCaseToNormalFormat = function (string) {
 		return string.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
 	};
@@ -42,7 +14,7 @@ app.factory('SignupFactory', function($http) {
 			var data = {};
 			data.title = SignupFactory.camelCaseToNormalFormat(key);
 			data.value = infoObj[key];
-			// if (key === 'dateOfBirth') data.value = data.value.getMonth() + '/' + data.value.getDay() + '/' + data.value.getFullYear();
+			if (key === 'dateOfBirth') data.value = data.value.getMonth() + '/' + data.value.getDay() + '/' + data.value.getFullYear();
 			if (key !== 'profileImage') infoArr.push(data);
 		};
 		return infoArr;
@@ -62,6 +34,7 @@ app.factory('SignupFactory', function($http) {
         });
     };
 
+    // format all data for creating athlete post
     SignupFactory.formatDataForPost = function (athleteInfo) {
     	var postObj = {};
     	for (var key in athleteInfo) {

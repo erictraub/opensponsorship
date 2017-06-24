@@ -9,9 +9,6 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
     $scope.states = SignupFactory.allStates;
     $scope.uploadedImg;
 
-	// $scope.busy = true;
-	// $scope.ready = false;
-
 	$scope.onNext = function (form) {
 		if ($scope.currentStep === 'Basic Info') {
             $scope.currentStep = 'About You';
@@ -44,6 +41,7 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
         $state.go('signup-review');
     };
 
+    // for image upload
 	$scope.$watch('files', function () {
 		$scope.upload($scope.files);
 	});
@@ -66,6 +64,7 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
         }
     };
 
+    // for prefilling forms when user is editing answers
     function setStateForEditing() {
         if ($stateParams.editing) {
             $scope.aboutYou = SignupFactory.signupInfo.aboutYou;
