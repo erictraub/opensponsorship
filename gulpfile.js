@@ -124,11 +124,11 @@ gulp.task('buildProduction', ['buildCSSProduction', 'buildJSProduction']);
 // --------------------------------------------------------------
 
 gulp.task('build', function () {
-    if (process.env.NODE_ENV === 'production') {
-        runSeq(['buildJSProduction', 'buildCSSProduction']);
-    } else {
+    // if (process.env.NODE_ENV === 'production') {
+    //     runSeq(['buildJSProduction', 'buildCSSProduction']);
+    // } else {
         runSeq(['buildJS', 'buildCSS']);
-    }
+    // }
 });
 
 gulp.task('default', function () {
