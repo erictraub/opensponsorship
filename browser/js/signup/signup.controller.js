@@ -13,9 +13,6 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
 	// $scope.ready = false;
 
 	$scope.onNext = function (form) {
-		console.log('basicInfo: ', $scope.basicInfo);
-		console.log('aboutYou: ', $scope.aboutYou);
-		console.log('socialMedia: ', $scope.socialMedia);
 		if ($scope.currentStep === 'Basic Info') {
             $scope.currentStep = 'About You';
             updateProgressBar(66);
@@ -27,7 +24,6 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
 	};
 
 	$scope.onPrev = function (form) {
-		console.log('FORM: ', form);
 		if ($scope.currentStep === 'About You') {
             $scope.currentStep = 'Basic Info';
             updateProgressBar(33);
@@ -44,9 +40,8 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
     	if (Array.isArray($scope.aboutYou.charities)) $scope.aboutYou.charities = $scope.aboutYou.charities.split(', ');
     	SignupFactory.signupInfo['aboutYou'] = $scope.aboutYou;
     	SignupFactory.signupInfo['socialMedia'] = $scope.socialMedia;
-    	console.log('FACT: ', SignupFactory.signupInfo);
     	$scope.all = SignupFactory.signupInfo;
-        // $state.go('signup-review');
+        $state.go('signup-review');
     };
 
 	$scope.$watch('files', function () {
@@ -65,7 +60,6 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
                 }).progress(function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 }).success(function (data, status, headers, config) {
-                	console.log('DATA: ', data);
                 	$scope.socialMedia['profileImage'] = data.imageUrl;
                 });
             }
@@ -74,11 +68,9 @@ app.controller('SignupController', function($scope, Upload, $log, SignupFactory,
 
     function setStateForEditing() {
         if ($stateParams.editing) {
-            console.log('SignupFactory', SignupFactory.signupInfo.aboutYou)
             $scope.aboutYou = SignupFactory.signupInfo.aboutYou;
             $scope.basicInfo = SignupFactory.signupInfo.basicInfo;
             $scope.socialMedia = SignupFactory.signupInfo.socialMedia;
-            console.log('SCOPE', $scope);
         }
     };
 
