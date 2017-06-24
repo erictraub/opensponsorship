@@ -7,7 +7,7 @@
  */
 
 module.exports = {
-    "DATABASE_URI": process.env.MONGOLAB_URI,
+    "DATABASE_URI": process.env.MONGODB_URI,
     "AMAZON_S3_KEY": process.env.AMAZON_S3_KEY,
     "AMAZON_S3_SECRET": process.env.AMAZON_S3_SECRET,
     "SESSION_SECRET": process.env.SESSION_SECRET,
