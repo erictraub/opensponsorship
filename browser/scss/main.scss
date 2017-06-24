@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fdfdfd;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+#main {
+  padding-top: 60px;
+  margin: 0 auto;
+}
+
+.page-title {
+	text-align: center;
+}
+
+@import 'directives/navbar';
+@import 'states/home';
+@import 'states/signup';
+@import 'states/signup-review';
