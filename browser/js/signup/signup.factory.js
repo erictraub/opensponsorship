@@ -53,8 +53,8 @@ app.factory('SignupFactory', function($http) {
 
     SignupFactory.createAthlete = function(body){
         return $http.post('/api/signup/athlete', body)
-        .then(function(athlete){
-            return athlete;
+        .then(function(response){
+            return response.data;
         });
     };
 

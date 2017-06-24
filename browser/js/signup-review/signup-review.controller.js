@@ -11,8 +11,8 @@ app.controller('SignupReviewController', function($scope, SignupFactory, sports)
 		var postObj = SignupFactory.formatDataForPost($scope.athleteInfo);
 		console.log('POST: ', postObj);
 		SignupFactory.createAthlete(postObj)
-		.then(data => {
-			console.log('BACK HERE: ', data);
+		.then(newAthlete => {
+			console.log(newAthlete)
 		});
 	};
 

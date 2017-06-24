@@ -57,7 +57,6 @@ router.post('/profile-image', function(req, res, next) {
 router.post('/athlete', function(req, res, next) {
     Athlete.create(req.body)
     .then(newAthlete => {
-        console.log('ATH: ', newAthlete);
         res.json(newAthlete);
     })
     .catch(err => next(err));
